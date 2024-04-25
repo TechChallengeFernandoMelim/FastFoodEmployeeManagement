@@ -9,7 +9,6 @@ public class Logger(AmazonSQSClient sqsClient) : ILogger
 {
     public async Task Log(string stackTrace, string message, string exception)
     {
-
         Dictionary<string, MessageAttributeValue> messageAttributes = new Dictionary<string, MessageAttributeValue>
         {
             { "StackTrace",   new MessageAttributeValue { DataType = "String", StringValue = stackTrace } },

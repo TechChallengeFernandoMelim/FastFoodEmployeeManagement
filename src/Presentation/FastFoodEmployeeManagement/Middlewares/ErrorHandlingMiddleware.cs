@@ -1,14 +1,14 @@
 ﻿using FastFoodEmployeeManagement.Application.UseCases;
 using FastFoodEmployeeManagement.Domain.Exceptions;
-using NLog;
 using System.Net;
 using System.Text.Json;
+using ILogger = FastFoodEmployeeManagement.Domain.Contracts.Logs.ILogger;
 
 namespace FastFoodEmployeeManagement.Middlewares;
 
-public class ErrorHandlingMiddleware(RequestDelegate next, Logger logger)
+public class ErrorHandlingMiddleware(RequestDelegate next)
 {
-    public async Task Invoke(HttpContext context)
+    public async Task Invoke(HttpContext context, ILogger logger)
     {
         var response = context.Response;
         response.ContentType = "application/json";
@@ -53,7 +53,7 @@ public class ErrorHandlingMiddleware(RequestDelegate next, Logger logger)
                 new KeyValuePair<string, List<string>>("InternalServerError", new List<string>() { "Internal server error" })
             };
 
-            logger.Log(NLog.LogLevel.Fatal, $"Exception: {ex}");
+            await logger.Log(ex.StackTrace, ex.Message, ex.ToString());
 
             await response.WriteAsync(JsonSerializer.Serialize(result));
         }

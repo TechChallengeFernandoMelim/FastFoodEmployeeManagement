@@ -11,7 +11,7 @@ public class Logger(AmazonSQSClient sqsClient) : ILogger
     {
         Dictionary<string, MessageAttributeValue> messageAttributes = new Dictionary<string, MessageAttributeValue>
         {
-            { "Service",   new MessageAttributeValue { DataType = "String", StringValue = "FastFoodUserManagement" } },
+            { "Service",   new MessageAttributeValue { DataType = "String", StringValue = "FastFoodEmployeeManagement" } },
             { "StackTrace",   new MessageAttributeValue { DataType = "String", StringValue = stackTrace } },
             { "ExceptionMessage",  new MessageAttributeValue { DataType = "String", StringValue = message } },
             { "Ex", new MessageAttributeValue { DataType = "String", StringValue = exception } },

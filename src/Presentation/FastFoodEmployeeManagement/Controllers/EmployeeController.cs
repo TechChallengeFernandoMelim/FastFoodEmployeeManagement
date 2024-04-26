@@ -76,4 +76,10 @@ public class EmployeeController(IValidationNotifications validationNotifications
         var data = await mediator.Send(new GetEmployeesRequest(), cancellationToken);
         return await Return(new ApiBaseResponse<GetEmployeesResponse>() { Data = data });
     }
+
+    [HttpGet("NotImplementedException")]
+    public async Task<IActionResult> NotImplementedException(CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException("Endpoint para testar logger - FastFoodEmployeeManagement.");
+    }
 }

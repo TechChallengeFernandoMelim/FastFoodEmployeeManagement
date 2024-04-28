@@ -10,10 +10,8 @@ public class AuthenticateEmployeeHandler(IEmployeeRepository EmployeeRepository,
 {
     public async Task<AuthenticateEmployeeResponse> Handle(AuthenticateEmployeeRequest request, CancellationToken cancellationToken)
     {
-        var cpf = request.cpf.Replace(".", string.Empty).Replace("-", string.Empty);
-
-        var Employee = await EmployeeRepository.GetEmployeeByCPFOrEmailAsync(cpf, string.Empty, cancellationToken)
-            ?? throw new ObjectNotFoundException("Usuário não encontrado para esse CPF");
+        var Employee = await EmployeeRepository.GetEmployeeByEmailAsync(request.Email, cancellationToken)
+            ?? throw new ObjectNotFoundException("Usuário não encontrado para esse email");
 
         var response = mapper.Map<AuthenticateEmployeeResponse>(Employee);
         response.Token = await EmployeeAuthentication.AuthenticateEmployee(Employee, cancellationToken);

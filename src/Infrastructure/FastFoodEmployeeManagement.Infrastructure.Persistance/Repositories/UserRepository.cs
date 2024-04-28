@@ -26,15 +26,14 @@ public class EmployeeRepository(IAmazonDynamoDB dynamoDb) : IEmployeeRepository
         return response.HttpStatusCode == HttpStatusCode.OK;
     }
 
-    public async Task<EmployeeEntity> GetEmployeeByCPFOrEmailAsync(string identification, string email, CancellationToken cancellationToken)
+    public async Task<EmployeeEntity> GetEmployeeByEmailAsync(string email, CancellationToken cancellationToken)
     {
         var request = new ScanRequest
         {
             TableName = Environment.GetEnvironmentVariable("AWS_TABLE_NAME_DYNAMO"),
-            FilterExpression = "identification = :identification OR email = :email",
+            FilterExpression = "email = :email",
             ExpressionAttributeValues = new Dictionary<string, AttributeValue>
             {
-                { ":identification", new AttributeValue { S = identification } },
                 { ":email", new AttributeValue { S = email } }
             }
         };
@@ -63,7 +62,7 @@ public class EmployeeRepository(IAmazonDynamoDB dynamoDb) : IEmployeeRepository
         {
             return new EmployeeEntity
             {
-                Identification = item.ContainsKey("identification") ? item["identification"].S : null,
+                Password = item.ContainsKey("password") ? item["password"].S : null,
                 Name = item.ContainsKey("name") ? item["name"].S : null,
                 Email = item.ContainsKey("email") ? item["email"].S : null,
                 CognitoEmployeeIdentification = item.ContainsKey("clientid") ? item["clientid"].S : null

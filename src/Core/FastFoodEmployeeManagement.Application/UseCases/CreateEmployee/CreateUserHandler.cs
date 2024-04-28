@@ -16,12 +16,11 @@ public class CreateEmployeeHandler(
     public async Task<CreateEmployeeResponse> Handle(CreateEmployeeRequest request, CancellationToken cancellationToken)
     {
         var Employee = mapper.Map<EmployeeEntity>(request);
-        Employee.Identification = Employee.Identification.Replace(".", string.Empty).Replace("-", string.Empty);
 
-        var existingCustomer = await EmployeeRepository.GetEmployeeByCPFOrEmailAsync(Employee.Identification, Employee.Email, cancellationToken);
+        var existingCustomer = await EmployeeRepository.GetEmployeeByEmailAsync(Employee.Email, cancellationToken);
 
         if (existingCustomer != null)
-            validationNotifications.AddError("Identification", "Já existe um usuário cadastrado com esse CPF ou e-mail.");
+            validationNotifications.AddError("Identification", "Já existe um usuário cadastrado com esse e-mail.");
         else
         {
             var cognitoEmployeeIdentification = await EmployeeCreation.CreateEmployee(Employee, cancellationToken);

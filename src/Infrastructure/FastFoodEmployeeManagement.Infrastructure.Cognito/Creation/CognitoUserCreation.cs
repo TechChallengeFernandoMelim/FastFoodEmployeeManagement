@@ -21,7 +21,7 @@ public class CognitoEmployeeCreation(AmazonCognitoIdentityProviderClient cognito
 
         var setPassword = new AdminSetUserPasswordRequest()
         {
-            Password = Employee.Identification,
+            Password = Employee.Password,
             Username = Employee.Email,
             UserPoolId = EmployeePoolId,
             Permanent = true

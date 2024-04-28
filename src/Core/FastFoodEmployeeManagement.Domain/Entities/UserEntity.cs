@@ -5,7 +5,7 @@ namespace FastFoodEmployeeManagement.Domain.Entities;
 public class EmployeeEntity
 {
     [JsonPropertyName("pk")]
-    public string Pk => Identification;
+    public string Pk => Email;
 
     [JsonPropertyName("sk")]
     public string Sk => Pk;
@@ -16,8 +16,8 @@ public class EmployeeEntity
     [JsonPropertyName("email")]
     public string Email { get; set; }
 
-    [JsonPropertyName("identification")]
-    public string Identification { get; set; }
+    [JsonPropertyName("password")]
+    public string Password { get; set; }
 
     [JsonPropertyName("cognitoEmployeeIdentification")]
     public string CognitoEmployeeIdentification { get; set; }

@@ -37,10 +37,10 @@ public class EmployeeController(IValidationNotifications validationNotifications
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiBaseResponse))]
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiBaseResponse<AuthenticateEmployeeResponse>))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiBaseResponse))]
-    [HttpGet("AuthenticateEmployee/{cpf}")]
-    public async Task<IActionResult> AuthenticateEmployee(string cpf, CancellationToken cancellationToken)
+    [HttpGet("AuthenticateEmployee")]
+    public async Task<IActionResult> AuthenticateEmployee([FromQuery] AuthenticateEmployeeRequest authenticateEmployeeRequest, CancellationToken cancellationToken)
     {
-        var data = await mediator.Send(new AuthenticateEmployeeRequest(cpf), cancellationToken);
+        var data = await mediator.Send(authenticateEmployeeRequest, cancellationToken);
         return await Return(new ApiBaseResponse<AuthenticateEmployeeResponse>() { Data = data });
     }
 

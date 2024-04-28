@@ -1,5 +1,4 @@
 ﻿using FastFoodEmployeeManagement.Application.UseCases;
-using FastFoodEmployeeManagement.Application.UseCases.AuthenticateAsGuest;
 using FastFoodEmployeeManagement.Application.UseCases.AuthenticateEmployee;
 using FastFoodEmployeeManagement.Application.UseCases.CreateEmployee;
 using FastFoodEmployeeManagement.Application.UseCases.GetEmployees;
@@ -43,22 +42,6 @@ public class EmployeeController(IValidationNotifications validationNotifications
     {
         var data = await mediator.Send(new AuthenticateEmployeeRequest(cpf), cancellationToken);
         return await Return(new ApiBaseResponse<AuthenticateEmployeeResponse>() { Data = data });
-    }
-
-    /// <summary>
-    /// Authenticate as guest
-    /// </summary>
-    /// <returns>Token</returns>
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiBaseResponse<AuthenticateAsGuestResponse>))]
-    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiBaseResponse))]
-    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiBaseResponse))]
-    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiBaseResponse<AuthenticateAsGuestResponse>))]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiBaseResponse))]
-    [HttpGet("AuthenticateAsGuest")]
-    public async Task<IActionResult> AuthenticateAsGuest(CancellationToken cancellationToken)
-    {
-        var data = await mediator.Send(new AuthenticateAsGuestRequest(), cancellationToken);
-        return await Return(new ApiBaseResponse<AuthenticateAsGuestResponse>() { Data = data });
     }
 
     /// <summary>

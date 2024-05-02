@@ -10,9 +10,6 @@ public class CognitoEmployeeAuthentication(AmazonCognitoIdentityProviderClient c
 {
     public async Task<string> AuthenticateEmployee(EmployeeEntity Employee, CancellationToken cancellationToken)
     {
-        if (cache.TryGetValue(Employee.Email, out string cachedToken))
-            return cachedToken;
-
         var userPoolId = Environment.GetEnvironmentVariable("AWS_EMPLOYEE_POOL_ID");
         var clientId = Environment.GetEnvironmentVariable("AWS_CLIENT_ID_COGNITO");
 
@@ -31,8 +28,6 @@ public class CognitoEmployeeAuthentication(AmazonCognitoIdentityProviderClient c
         };
 
         var response = await cognito.AdminInitiateAuthAsync(request, cancellationToken);
-
-        cache.Set(Employee.Email, response.AuthenticationResult.IdToken, TimeSpan.FromMinutes(30));
 
         return response.AuthenticationResult.IdToken;
     }

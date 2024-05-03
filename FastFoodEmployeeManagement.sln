@@ -23,7 +23,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFoodEmployeeManagement.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFoodEmployeeManagement.Infrastructure.IoC", "src\Infrastructure\FastFoodEmployeeManagement.Infrastructure.IoC\FastFoodEmployeeManagement.Infrastructure.IoC.csproj", "{EDA351D7-DD35-4E24-AAA0-22AFE7094C65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFoodEmployeeManagement.Infrastructure.SQS", "src\Infrastructure\FastFoodEmployeeManagement.Infrastructure.SQS\FastFoodEmployeeManagement.Infrastructure.SQS.csproj", "{2DC85F81-FDFA-4595-8EC3-12154CB2F562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFoodEmployeeManagement.Infrastructure.SQS", "src\Infrastructure\FastFoodEmployeeManagement.Infrastructure.SQS\FastFoodEmployeeManagement.Infrastructure.SQS.csproj", "{2DC85F81-FDFA-4595-8EC3-12154CB2F562}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEAB4993-24D8-4339-A670-39E78B86035F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\deploy.yaml = .github\workflows\deploy.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

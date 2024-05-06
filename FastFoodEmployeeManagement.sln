@@ -27,8 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFoodEmployeeManagement.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEAB4993-24D8-4339-A670-39E78B86035F}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yaml = .github\workflows\build.yaml
 		.github\workflows\deploy.yaml = .github\workflows\deploy.yaml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFoodEmployeeManagement.Tests", "src\FastFoodEmployeeManagement.Tests\FastFoodEmployeeManagement.Tests.csproj", "{308DCA37-3216-4B92-A869-4C7341F762D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +67,10 @@ Global
 		{2DC85F81-FDFA-4595-8EC3-12154CB2F562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC85F81-FDFA-4595-8EC3-12154CB2F562}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC85F81-FDFA-4595-8EC3-12154CB2F562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308DCA37-3216-4B92-A869-4C7341F762D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308DCA37-3216-4B92-A869-4C7341F762D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308DCA37-3216-4B92-A869-4C7341F762D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308DCA37-3216-4B92-A869-4C7341F762D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +86,7 @@ Global
 		{2386EA62-BCB1-4E44-B084-E1AF15DE3656} = {6850AC2F-7FB8-4AD2-8A2D-90DA037C016A}
 		{EDA351D7-DD35-4E24-AAA0-22AFE7094C65} = {6850AC2F-7FB8-4AD2-8A2D-90DA037C016A}
 		{2DC85F81-FDFA-4595-8EC3-12154CB2F562} = {6850AC2F-7FB8-4AD2-8A2D-90DA037C016A}
+		{308DCA37-3216-4B92-A869-4C7341F762D4} = {E4E36042-31AD-4FA6-B7A2-C29EF1E90056}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6230C6AF-77DC-4DC4-B7F9-96311F936C5D}

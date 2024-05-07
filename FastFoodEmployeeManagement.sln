@@ -29,9 +29,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yaml = .github\workflows\build.yaml
 		.github\workflows\deploy.yaml = .github\workflows\deploy.yaml
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFoodEmployeeManagement.Tests", "src\FastFoodEmployeeManagement.Tests\FastFoodEmployeeManagement.Tests.csproj", "{308DCA37-3216-4B92-A869-4C7341F762D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFoodEmployeeManagement.Tests", "src\FastFoodEmployeeManagement.Tests\FastFoodEmployeeManagement.Tests.csproj", "{308DCA37-3216-4B92-A869-4C7341F762D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,16 +4,20 @@ using FastFoodEmployeeManagement.Domain.Entities;
 using FastFoodEmployeeManagement.Infrastructure.Cognito.Authentication;
 using Microsoft.Extensions.Caching.Memory;
 using Moq;
+using System.Net;
+using Amazon.Runtime;
 
 namespace FastFoodEmployeeManagement.Tests.Infrastructure.Cognito;
 
 public class CognitoEmployeeAuthenticationTests
 {
+    AWSCredentials credentials = new BasicAWSCredentials("trest", "test");
+
     [Fact]
     public async Task AuthenticateEmployee_ValidEmployee_ReturnsToken()
     {
         // Arrange
-        var cognitoMock = new Mock<AmazonCognitoIdentityProviderClient>();
+        var cognitoMock = new Mock<AmazonCognitoIdentityProviderClient>(credentials, Amazon.RegionEndpoint.USEast1);
         var cacheMock = new Mock<IMemoryCache>();
 
         var employee = new EmployeeEntity { Email = "test@example.com", Password = "password123" };

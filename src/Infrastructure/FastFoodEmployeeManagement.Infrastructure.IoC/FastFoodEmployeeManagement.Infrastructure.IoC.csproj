@@ -21,5 +21,8 @@
 	  <ProjectReference Include="..\FastFoodEmployeeManagement.Infrastructure.SQS\FastFoodEmployeeManagement.Infrastructure.SQS.csproj" />
 	</ItemGroup>
 
+	<PropertyGroup>
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</PropertyGroup>
 
 </Project>

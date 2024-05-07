@@ -12,12 +12,23 @@
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="xunit" Version="2.5.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\FastFoodEmployeeManagement.Application\FastFoodEmployeeManagement.Application.csproj" />
+    <ProjectReference Include="..\Core\FastFoodEmployeeManagement.Domain\FastFoodEmployeeManagement.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\FastFoodEmployeeManagement.Infrastructure.Cognito\FastFoodEmployeeManagement.Infrastructure.Cognito.csproj" />
+    <ProjectReference Include="..\Infrastructure\FastFoodEmployeeManagement.Infrastructure.IoC\FastFoodEmployeeManagement.Infrastructure.IoC.csproj" />
+    <ProjectReference Include="..\Infrastructure\FastFoodEmployeeManagement.Infrastructure.Persistance\FastFoodEmployeeManagement.Infrastructure.Persistance.csproj" />
+    <ProjectReference Include="..\Infrastructure\FastFoodEmployeeManagement.Infrastructure.SQS\FastFoodEmployeeManagement.Infrastructure.SQS.csproj" />
+    <ProjectReference Include="..\Presentation\FastFoodEmployeeManagement\FastFoodEmployeeManagement.csproj" />
   </ItemGroup>
 
 </Project>

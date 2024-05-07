@@ -1,10 +1,6 @@
 # FastFoodEmployeeManagement
 
-O repositorio FastFoodEmployeeManagement tem por objetivo implementar uma Lambda Function responsável por realizar a criação e autenticação de usuários utilizando o AWS Cognito.
-
-## Execução do proejto
-Para executar o projeto é fácil, basta apenas definir os valores paras as variáveis de ambiente dele, que se encontram no launchsettings.json da API que está presente na camada Presentation.
-Após isso, basta executar o projeto da forma que preferir, nós utilizamos o Docker para isso.
+O repositorio FastFoodEmployeeManagement tem por objetivo implementar uma Lambda Function responsável por realizar a criação e autenticação de funcionários da lanchonete utilizando o AWS Cognito.
 
 
 ### Variáveis de ambiente
@@ -22,44 +18,7 @@ Todas as variáveis de ambiente do projeto visam fazer integração com algum servi
 
 ### Execução com Docker
 
-Utilize o seguinte comando na pasta raiz do projeto para criar a imagem Docker
+A execução do projeto pode ser feita buildando o dockerfile na raiz do repositório e depois executando a imagem gerada em um container. O serviço foi testado sendo executado direto pelo visual Studio e pela AWS.
 
-```
-docker build -t fast_food_Employee_management -f .\src\Presentation\FastFoodEmployeeManagement\Dockerfile .
-```
+### Testes
 
-Utilize o seguinte comando para subir um container com essa imagem:
-
-```
-	docker run -d -p 8080:8080 \
-	-e AWS_ACCESS_KEY_DYNAMO="sua_access_key" \
-	-e AWS_SECRET_KEY_DYNAMO="sua_secret_key" \
-	-e AWS_TABLE_NAME_DYNAMO="nome_da_tabela" \
-	-e LOG_REGION="regiao_do_log_group" \
-	-e LOG_GROUP="nome_do_log_group" \
-	-e AWS_EMPLOYEE_POOL_ID="id_da_Employee_pool" \
-	-e AWS_CLIENT_ID_COGNITO="client_id_do_cognito" \
-	-e GUEST_EMAIL="email_do_usuario_padrao" \
-	-e GUEST_IDENTIFICATION="senha_do_usuario_padrao" \
-	fast_food_Employee_management
-```
-
-ou 
-
-```
-docker run -d -p 8080:8080 -e AWS_ACCESS_KEY_DYNAMO="sua_access_key" -e AWS_SECRET_KEY_DYNAMO="sua_secret_key" -e AWS_TABLE_NAME_DYNAMO="nome_da_tabela" -e LOG_REGION="regiao_do_log_group" -e LOG_GROUP="nome_do_log_group" -e AWS_EMPLOYEE_POOL_ID="id_da_Employee_pool" -e AWS_CLIENT_ID_COGNITO="client_id_do_cognito" -e GUEST_EMAIL="email_do_usuario_padrao" -e GUEST_IDENTIFICATION="senha_do_usuario_padrao" fast_food_Employee_management
-```
-
-Dessa forma o container estará executando a API.
-
-## Arquitetura do projeto
-A seguinte arquitetura foi utilizada para o projeto:
-
-![Texto Alternativo](./images/ArqLambda.png)
-
-Utilizamos 3 serviços da AWS apenas nese projeto: AWS Cognito, Cloudwatch e DynamoDB.
-
-Como decidimos utilizar a AWS como plataforma nuvem, utilizamos o AWS Cognito para trabalharmos com gerenciamento dos nossos usuários. Através dela, conseguimos cadastrar e autenticar usuários de forma fácil.
-Para gerenciar melhor os dados do usuário, optamos por utilizar o DynamoDB. Por ser um banco estruturado em tabelas e não tendo a necessidade de utilizar mais do que uma, pensamos em utilizá-lo para armazenar os dados dos usuários cadastrados. Nessa solução, apenas uma tabela foi utilizada, o nome dela deve ser fornecido pela variável de ambiente AWS_TABLE_NAME_DYNAMO. Como apenas uma única tabela foi utilizada, excluímos a necessidade de utilizar um sgbd relacional. Utilizar um NoSQL nos dá uma liberdade maior caso seja necessário fazer alterações no esquema de usuários salvo no banco, algo que seria mais complicado de se lidar no modelo relacional, onde teríamos que nos preocupar com a criação do esquema e com o versionamento do mesmo.
-Para lidar com os erros ocorridos na execução do código fonte, utilizamos o Cloudwatch, onde salvamos todos os logs necessários de exceções disparadas durante a execução de alguma funcionalidade.
-Conforme foi solicitado, essa solução está sendo publicada como uma Lambda function.

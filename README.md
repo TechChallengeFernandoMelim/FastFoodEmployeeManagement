@@ -29,3 +29,12 @@ Conforme foi solicitado, estou postando aqui as evidências de cobertura dos test
 ![Coverage2](./images/coverage2.png)
 
 Através das imagens é possível observar que a cobertura por testes unitários ficou superior a 80%, conforme solicitado.
+
+### Endpoints
+
+Os endpoints presentes nesse projeto são:
+
+- POST Employee/CreateEmployee: Responsável por criar as credenciais de login de um funcionário.
+- GET Employee/AuthenticateEmployee: Responsável por autenticar o funcionário com email e senha.
+- GET Employee/GetEmployees: Responsável por retornar todos os funcionários cadastrados.
+- GET Employee/NotImplementedException: Endpoint apenas para testar se serviço de log está funcionando.
